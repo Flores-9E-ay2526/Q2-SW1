@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varsity Roster Check1 SW</title>
+
+    <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ink: #12234A;
+            --muted: #4A5878;
+            --ground: #F5F7FB;
+            --red: #C8283A;
+            --maple: #E3B87A;
+            --display: "Big Shoulders Display", Impact, "Arial Narrow", sans-serif;
+            --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--ground);
+            color: var(--ink);
+            font-family: var(--body);
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .banner {
+            background: var(--ink);
+            color: #fff;
+            padding: clamp(32px, 6vw, 64px) 20px;
+            border-bottom: 8px solid var(--maple);
+        }
+
+        .banner h1 {
+            max-width: 720px;
+            margin: 0 auto;
+            font-family: var(--display);
+            font-weight: 800;
+            font-size: clamp(48px, 9vw, 96px);
+            line-height: 0.95;
+        }
+
+        .banner p {
+            max-width: 720px;
+            margin: 16px auto 0;
+            color: #D6DCEB;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 40px 20px 64px;
+        }
+
+        .field { margin-bottom: 20px; }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            height: 52px;
+            padding: 0 16px;
+            font: inherit;
+            color: var(--ink);
+            background: #fff;
+            border: 2px solid var(--ink);
+            border-radius: 10px;
+        }
+
+        input[type="text"]::placeholder { color: var(--muted); }
+
+        input:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--red);
+            outline-offset: 3px;
+        }
+
+        button {
+            min-height: 52px;
+            padding: 0 36px;
+            font: inherit;
+            font-weight: 700;
+            color: #fff;
+            background: var(--red);
+            border: 0;
+            border-radius: 999px;
+            cursor: pointer;
+        }
+
+        button:hover { background: #A81F2F; }
+
+        #result { margin-top: 32px; }
+
+        #result:not(:empty) {
+            padding: 20px 24px;
+            border-radius: 12px;
+            border-left: 8px solid var(--ink);
+            background: #fff;
+            font-weight: 600;
+        }
+
+        #result.ok { border-left-color: #1F7A3E; background: #E8F5EC; }
+        #result.no { border-left-color: var(--red); background: #FBEAEC; }
+    </style>
+</head>
+<body>
+
+    <header class="banner">
+        <h1>Varsity roster check</h1>
+        <p>Enter your first and last name to see if you made the school's basketball varsity team.</p>
+    </header>
+
+    <main>
+        <div class="field">
+            <label for="First_name">First name</label>
+            <input type="text" id="First_name" placeholder="enter your first name">
+        </div>
+
+        <div class="field">
+            <label for="Last_name">Last name</label>
+            <input type="text" id="Last_name" placeholder="enter your last name">
+        </div>
+
+        <button py-click="view_members">Search</button>
+
+        <div id="result" aria-live="polite"></div>
+    </main>
+
+    <script type="py" src="./main.py"></script>
+
+</body>
+</html>
+</html>
